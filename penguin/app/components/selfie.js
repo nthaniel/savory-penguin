@@ -8,7 +8,11 @@ var {
   Image
 } = React;
 
-import Camera from 'react-native-camera';
+// import Camera from 'react-native-camera';
+
+var Camera = require('react-native-camera').default;
+
+var LooksGood = require('./looksgood');
 
 var styles = StyleSheet.create({
   container: {
@@ -29,6 +33,13 @@ var styles = StyleSheet.create({
 });
 
 class Selfie extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      picture: false
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -54,10 +65,21 @@ class Selfie extends Component{
 
   takePicture() {
     this.camera.capture()
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        this.setState({picture: data});
+        this.handleMoveOn();
+      })
       .catch(err => console.error(err));
   }
 
+  handleMoveOn() {
+    this.props.navigator.push({
+      title: "Looking Good!",
+      component: LooksGood,
+      passProps: {picture: this.state.picture}
+    });
+  }
 };
 
 module.exports = Selfie;
