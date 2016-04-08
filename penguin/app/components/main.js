@@ -9,6 +9,7 @@ var {
 } = React;
 
 var Welcome = require('./welcome');
+var Selfie = require('./selfie');
 
 var styles = StyleSheet.create({
   mainContainer: {
@@ -64,6 +65,14 @@ class Main extends Component{
     });
   }
 
+  handleNewUser(){
+    console.log('new user!');
+    this.props.navigator.push({
+      title: "Take a selfie!",
+      component: Selfie
+    })
+  }
+
   render(){
     return (
       <View style={styles.mainContainer}>
@@ -72,6 +81,12 @@ class Main extends Component{
           onPress={this.handleSubmit.bind(this)}
           underlayColor="rgba(255, 255, 255, 0.95)">
           <Text style={styles.buttonText}>Sign in with Facebook</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={this.handleNewUser.bind(this)}
+          underlayColor="rgba(255, 255, 255, 0.95)">
+          <Text style={styles.buttonText}>I'm new here</Text>
         </TouchableHighlight>
       </View>
     )
