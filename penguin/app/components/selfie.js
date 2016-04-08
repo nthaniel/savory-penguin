@@ -4,7 +4,6 @@ var {
   Component,
   View,
   StyleSheet,
-  Text,
   TouchableHighlight,
   Image
 } = React;
@@ -38,6 +37,7 @@ class Selfie extends Component{
             this.camera = cam;
           }}
           style={styles.preview}
+          type="front"
           aspect={Camera.constants.Aspect.fill}>
           <TouchableHighlight 
             style={styles.capture} 
