@@ -71,12 +71,13 @@ class LooksGood extends Component{
     return (
       <View style={styles.mainContainer}>
         <Text>How do you look?</Text>
-        <Image style={styles.image}/>
+        <Image 
+          style={styles.image} 
+          source={{uri: this.props.picture}} />
         <Text>{this.props.picture}</Text>
         <TouchableHighlight
           style={styles.button}
           onPress={this.handleLookingGood.bind(this)}>
-          <Text style={styles.buttonText}>I look great!</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}

@@ -49,7 +49,8 @@ class Selfie extends Component{
           }}
           style={styles.preview}
           type="front"
-          aspect={Camera.constants.Aspect.fill}>
+          aspect={Camera.constants.Aspect.fill}
+          captureTarget={Camera.constants.CaptureTarget.disk}>
           <TouchableHighlight 
             style={styles.capture} 
             onPress={this.takePicture.bind(this)}
