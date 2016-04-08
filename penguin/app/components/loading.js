@@ -28,16 +28,31 @@ class Loading extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      isLoading: true,
+      restaurant: false,
+      match: false
     };
-    setTimeout(() => { 
-      /*fetching a match*/
-      this.setState({
-        isLoading: false
+
+    fetch('http://159.203.254.178:8000/match')
+      .then((res) => res.json())
+      .then((json) => {
+        this.setState({restaurant: json.restaurant});
+        this.setState({match: json.matchedUser});
+        this.handleMatch();
       });
+
+  }
+
+  handleMatch() {
+    setTimeout(() => { 
+      this.setState({isLoading: false});
       this.props.navigator.push({
         title: 'Results',
-        component: Results
+        component: Results,
+        passProps: {
+          restaurant: this.state.restaurant,
+          match: this.state.match
+        }
       });
     }, 2000); 
   }
