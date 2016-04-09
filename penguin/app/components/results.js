@@ -38,10 +38,10 @@ var styles = StyleSheet.create({
     justifyContent: 'center'
   },
   map: {
-    height: 150,
+    height: 300,
     margin: 10,
-    borderWidth: 1,
-    borderColor: '#000000',
+    marginTop: -100,
+    borderRadius: 15,
   }
 });
 
@@ -75,10 +75,13 @@ class Results extends Component{
           latitude: 39.06,
           longitude: -95.22,
         }}
+        maxDelta={3}
         style={styles.map}
         >
         </MapView>
-        <Text>Here's the restaurant.Be there in 5 min. or else...</Text>
+        <Text>Here's the restaurant. Be there in 5 min. or else...</Text>
+        <Text>{this.props.restaurant.name}</Text>
+        <Text>{this.props.restaurant.location.address}</Text>
         <TouchableHighlight
           disabled={this.state.onMyWay}
           style={styles.button}
