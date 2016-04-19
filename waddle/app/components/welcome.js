@@ -26,7 +26,7 @@ class Welcome extends Component{
   }
 
   render(){
-    var imageLink = this.props.picture || `${IP_address}/users/${this.props.username}/profilePhoto?nocache`;
+    var imageLink = this.props.picture || `${IP_address}/users/${this.props.username}/profilePhoto?${Date.now()}`;
     console.log('match.js link to image: ', imageLink);
     return (
       <View style={styles.mainContainer}>

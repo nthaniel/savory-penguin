@@ -33,7 +33,7 @@ class Match extends Component{
   }
 
   render(){
-    var imageLink = `${IP_address}/users/${this.props.match.username}/profilePhoto?nocache`;
+    var imageLink = `${IP_address}/users/${this.props.match.username}/profilePhoto?${Date.now()}`;
     console.log('match.js link to image: ', imageLink);
     return (
       <View style={styles.mainContainer}>
